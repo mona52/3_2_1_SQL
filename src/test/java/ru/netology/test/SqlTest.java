@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.app.LaunchApp;
 import ru.netology.data.SqlQuery;
 import ru.netology.page.DashboardPage;
 import ru.netology.page.LoginPage;
@@ -23,17 +24,7 @@ public class SqlTest {
 
     @BeforeAll
     static void launchApp() {
-        String filePath = "./app-deadline.jar ";
-        String param1 = " -P:jdbc.url=jdbc:mysql://localhost:3306/appdb ";
-        String param2 = " -P:jdbc.user=user ";
-        String param3 = " -P:jdbc.password=pass ";
-
-        Runtime re = Runtime.getRuntime();
-        try {
-            re.exec("java -jar " + filePath + param1 + param2 + param3);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        LaunchApp.launch();
     }
 
     @BeforeEach
