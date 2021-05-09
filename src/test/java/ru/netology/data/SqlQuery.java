@@ -42,6 +42,18 @@ public class SqlQuery {
         return runner.query(conn, statusSql, new ScalarHandler<>());
     }
 
+    @SneakyThrows
+    public static void clearAllTables(){
+        var conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/appdb", "user", "pass"
+        );
+        runner.execute(conn, "DELETE from appdb.card_transactions");
+        runner.execute(conn, "DELETE from appdb.auth_codes");
+        runner.execute(conn, "DELETE from appdb.cards");
+        runner.execute(conn, "DELETE from appdb.users");
+
+    }
+
 }
 
 
